@@ -48,11 +48,16 @@ The framework includes the following test scenarios:
 ## Versions Used
 - **.NET SDK**: 8.0.403
 - **NUnit**: 3.13.2
-- **Selenium WebDriver**: 4.25.0
-- **Selenium ChromeDriver**: 130.0.6723.6900
+- **Selenium WebDriver**: 4.26.0
+- **Selenium ChromeDriver**: 130.0.6723.9100
 - **SpecFlow**: 3.9.40
 - **SpecFlow.NUnit**: 3.9.40
 
 ## Prerequisites
 - Visual Studio 2022 or later with the necessary extensions for .NET development.
 - An internet connection to access the TfL website during test execution.
+
+## How to Run the Tests
+1. Clone the repository to your local machine.
+   ```bash
+   git clone https://github.com/Rikesh307/TFL-Solution.git
