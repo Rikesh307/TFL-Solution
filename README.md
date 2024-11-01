@@ -11,7 +11,7 @@ This project implements a UI automation framework for testing the TfL Journey Pl
 
 ## Development Decisions
 1. **Reusable Code**: 
-   - A "JourneyPlannerStepDefinitions" class was created to encapsulate common functionalities, such as WebDriver initialization, element waiting, clicking, and text entry. This promotes code reuse across multiple test classes.
+   - A `JourneyPlannerStepDefinitions` class was created to encapsulate common functionalities, such as WebDriver initialization, element waiting, clicking, and text entry. This promotes code reuse across multiple test classes.
 
 2. **Page Object Model (POM)**:
    - The framework follows the Page Object Model design pattern, maintaining clean and organized code. Each page of the application is represented by a separate class, making updates easier to manage.
