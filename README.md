@@ -88,3 +88,95 @@ The framework includes the following test scenarios:
 1. Clone the repository to your local machine.
    ```bash
    git clone https://github.com/Rikesh307/TFL-Solution.git
+   ```
+
+2. Navigate to the project directory.
+   ```bash
+   cd TFL-Solution
+   ```
+
+3. Restore the project dependencies. This ensures that all the necessary NuGet packages are downloaded.
+   ```bash
+   dotnet restore
+   ```
+
+4. Set up the WebDriver. Ensure you have the Chrome browser installed, as the framework is configured to use ChromeDriver.
+   - Download the appropriate version of ChromeDriver that matches your Chrome version from [ChromeDriver downloads](https://chromedriver.chromium.org/downloads).
+   - Alternatively, you can manage your WebDriver through NuGet by adding the `Selenium.WebDriver.ChromeDriver` package to your project.
+
+5. Configure Test Settings (if needed).
+   - Modify any configurations required for your tests in the `appsettings.json` file or any relevant configuration files in your project.
+   - Make sure to check if there are any necessary environment variables or settings related to the TfL website you need to configure.
+
+6. Run the tests. Use the following command to execute all tests in the project:
+   ```bash
+   dotnet test
+   ```
+   This command runs all tests, and the results will be displayed in the console, indicating which tests passed or failed.
+
+7. View Test Results. After the tests have run, you can see the summary of the results directly in the console. For a more detailed report, you can consider using the NUnit3TestAdapter in Visual Studio or generating reports using tools like ReportUnit.
+
+8. Running Specific Tests (Optional). To run a specific test or a group of tests, you can use the `--filter` option:
+   ```bash
+   dotnet test --filter "FullyQualifiedName~YourTestName"
+   ```
+   Replace `YourTestName` with the name of the test you want to execute.
+
+## Continuous Integration (Optional)
+To automate test execution, you can set up a Continuous Integration (CI) pipeline using platforms like GitHub Actions or Azure DevOps. Create a `.yml` file in the `.github/workflows` directory to define the CI process that includes steps for restoring dependencies and running tests.
+
+## Troubleshooting Tips
+If you run into issues while executing the tests, check the following:
+- Ensure that your ChromeDriver version matches your Chrome browser version.
+- Verify that you have an active internet connection to access the TfL website.
+- Check if your firewall or antivirus settings are blocking the test execution.
+- Look for specific error messages in the console output for guidance on the issues.
+
+## Further Testing Options
+You can run tests in different environments or with different configurations to validate various aspects of the application, enhancing the robustness of your testing strategy.
+
+### Logging and Debugging (Optional)
+To assist with debugging, consider implementing logging within your tests to capture execution details, especially for failed tests. Use libraries like Serilog or NLog to log information to a file or other sinks for analysis.
+
+### Running Tests in Headless Mode (Optional)
+If you want to run tests without opening a browser window (headless mode), you can configure ChromeDriver to run in headless mode by modifying the WebDriver options in your test setup.
+```csharp
+var options = new ChromeOptions();
+options.AddArgument("--headless");
+// Add other options as needed
+var driver = new ChromeDriver(options);
+```
+
+### Browser Configuration (Optional)
+You can customize your Chrome browser settings by adding more arguments to `ChromeOptions`, such as:
+- `--start-maximized` to start the browser in maximized mode.
+- `--disable-gpu` to disable GPU hardware acceleration (useful for headless testing).
+- `--no-sandbox` to avoid issues related to sandboxing in certain environments.
+
+### Report Generation (Optional)
+To generate test reports, you may want to integrate additional tools such as Allure or ExtentReports to create visually appealing reports after test execution. Set up the reporting framework in your project to capture test execution details and results.
+
+### Parameterization (Optional)
+To test various scenarios efficiently, consider using parameterized tests in NUnit. This allows you to run the same test with different inputs.
+```
+[TestCase("Leicester Square", "Covent Garden")]
+[TestCase("Invalid Location", "Covent Garden")]
+public void TestJourneyPlanner(string startLocation, string endLocation) {
+    // Test implementation
+}
+```
+
+### API Testing (Optional)
+If the TfL Journey Planner has an API, consider writing additional tests to validate API responses, status codes, and data integrity.
+
+### Cleanup After Tests (Optional)
+Implement a cleanup mechanism to close the browser and release resources after test execution to prevent memory leaks or resource exhaustion.
+
+### Running Tests in Parallel (Optional)
+You can configure NUnit to run tests in parallel to speed up execution. Ensure that your tests are thread-safe before doing so.
+
+### Stay Updated (Optional)
+Regularly check for updates to your dependencies and the framework. Keeping everything up-to-date can help you leverage new features and improvements.
+
+## Conclusion
+The TFL Journey Planner Automation Framework provides a robust structure for testing the journey planning features on the TfL website. With the use of BDD principles, reusable components, and comprehensive test scenarios, the framework aims to ensure the quality and reliability of the journey planning functionality.
